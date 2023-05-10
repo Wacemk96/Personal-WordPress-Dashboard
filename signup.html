@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/style.css">
+    <title>Newsletter Sign Up</title>
+</head>
+
+<body>
+    <main>
+        <section class="intro"> <!-- Intro Section -->
+            <h1>Join 5,000+ others getting practical tips on design, growth <br> & launching side projects</h1>
+            <p>Subscribe below to get the latest content & new releases 👇</p>
+        </section>
+
+        <section> <!-- Sign Up Section-->
+            <div>
+                <button class="top-submit-btn" type="submit">Subscribe for weekly updates!</div>
+
+            <form action="/" method="POST">
+                <div class="input-form">
+                    <div>
+                        <input class="fname-field" type="text" name="fname" pattern="[A-Za-z]{1,255}"
+                            placeholder="First Name" required>
+                        <p class="fname-error-message fname-success-message txt"></p>
+                    </div>
+
+                    <div>
+                        <input class="lname-field" type="text" name="lname" pattern="[A-Za-z]{1,255}"
+                            placeholder="Last Name" required>
+                        <p class="lname-error-message lname-success-message txt"></p>
+                    </div>
+
+                    <div>
+                        <input class="email-field" type="email" name="email"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email Address" required>
+                        <p class="email-error-message email-success-message txt"></p>
+                    </div>
+
+                    <div>
+                        <button class="btm-submit-btn" type="submit">Subscribe !</button>
+                    </div>
+
+                    <p>By clicking the button, you are agreeing to our <span class="terms">Terms and Services</span></p>
+                </div>
+            </form>
+        </section>
+    </main>
+    <script src="script/script.js"></script>
+</body>
+
+</html>

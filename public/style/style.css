@@ -1,0 +1,250 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    width: 100vw;
+    padding: 10%;
+    display: flex;
+    font-family: "Poppins", sans-serif;
+    color: hsl(0, 0%, 100%);
+    background-color: hsl(0, 100%, 74%);
+    background-image: url("https://assets.codepen.io/4417738/bg-intro-desktop.png");
+  }
+  
+  main {
+    display: flex;
+    align-items: center;
+  }
+  
+  /* INTRO SECTION */
+  .intro {
+    padding: 6%;
+  }
+  
+  .intro h1 {
+    font-size: 3rem;
+  }
+  
+  .intro p {
+    line-height: 1.5;
+  }
+  
+  /* SIGN UP SECTION */
+  .top-submit-btn {
+    width: 470px;
+    height: 50px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: hsl(240, 75%, 98%);
+    background-color: hsl(248, 32%, 49%);
+    box-shadow: 2px 6px 10px hsla(257, 60%, 14%, .7);
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .top-submit-btn:hover {
+    background-color: hsl(249, 10%, 26%);
+  }
+  
+  .top-submit-btn:active {
+    background: hsl(248, 32%, 49%);
+  }
+  
+  .top-submit-btn span {
+    font-weight: 400;
+  }
+  
+  form {
+    margin-top: 5%;
+    box-shadow: 2px 5px 6px hsla(257, 60%, 14%, .7);
+    border-radius: 8px;
+    background-color: hsl(0, 0%, 100%);
+  }
+  
+  .input-form {
+    padding: 6%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .input-form div {
+    padding: 1%;
+  }
+  
+  .input-form input {
+    width: 400px;
+    padding: 4%;
+    border-radius: 5px;
+    border: 1px solid hsl(0, 0%, 90%);
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .input-form input:focus {
+    outline: none;
+    border: 1px solid hsl(248, 32%, 49%);
+    box-shadow: 0 0 10px #9ecaed;
+  }
+  
+  /* STYLING FOR INPUT FIELDS & MESSAGES */
+  .success {
+    border: 1px solid hsl(76, 78%, 45%);
+    background-color: hsla(76, 78%, 45%, .3);
+  }
+  
+  .failed {
+    border: 1px solid hsl(0, 100%, 74%);
+    background-color: hsla(354, 100%, 66%, .3);
+    background-image: url("https://assets.codepen.io/4417738/icon-error.svg");
+    background-repeat: no-repeat;
+    background-position: 95% 50%;
+  }
+  
+  .error-txt {
+    color: hsl(0, 100%, 74%);
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+  
+  .success-txt {
+    color: hsl(76, 78%, 45%);
+    font-size: 0.8rem;
+    font-style: italic;
+  }
+  
+  .input-form .txt {
+    text-align: right;
+  }
+  
+  .btm-submit-btn {
+    width: 400px;
+    padding: 4%;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    color: hsl(240, 75%, 98%);
+    background-color: hsl(154, 59%, 51%);
+    box-shadow: 1px 3px 5px hsla(257, 60%, 14%, .7);
+    cursor: pointer;
+    transition: 0.3s;
+    text-transform: uppercase;
+  }
+  
+  .btm-submit-btn:hover {
+    background-color: hsl(154, 59%, 71%);
+  }
+  
+  .btm-submit-btn:active {
+    background: hsl(154, 59%, 51%);
+  }
+  
+  .input-form p {
+    font-size: 0.7rem;
+    color: hsl(246, 25%, 77%);
+    text-align: center;
+    line-height: 1.8;
+  }
+  
+  .terms {
+    font-weight: 700;
+    color: hsl(0, 100%, 74%);
+    cursor: pointer;
+    transition: 0.3s;
+    position: relative;
+    text-decoration: none;
+  }
+  
+  /* UNDERLINE ANIMATION FOR TERMS */
+  .terms:hover {
+    color: hsl(248, 32%, 49%);
+  }
+  
+  .terms::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: hsl(248, 32%, 49%);
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+  }
+  
+  .terms:hover::before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+  
+  /* PLACEHOLDER SUPPORT */
+  ::placeholder { /* Support for Chrome, Firefox, Opera, Safari 10.1+ */
+    color: hsla(249, 10%, 26%, .6);
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  :-ms-input-placeholder { /* Support for Internet Explorer 10-11 */
+    color: hsla(249, 10%, 26%, .6);
+    font-size: 14px;
+  }
+  
+  ::-ms-input-placeholder { /* Support for Microsoft Edge */
+    color: hsla(249, 10%, 26%, .6);
+    font-size: 14px;
+  }
+  
+  /* Any devices, 1200px and below*/
+  @media only screen and (max-width: 1200px) {
+    body {
+      background-image: url("https://assets.codepen.io/4417738/bg-intro-mobile.png")
+    }
+    
+    main {
+      width: 100%;
+      flex-direction: column;
+      text-align: center;
+    }
+    
+    /* INTRO SECTION */
+    .intro {
+      padding-top: 10%;
+    }
+    
+    .intro h1 {
+      font-size: 1.8rem;
+    }
+    
+    /* SIGN UP SECTION */
+    .top-submit-btn {
+      width: 330px;
+      height: 80px;
+      padding: 0 20%;
+    }
+    
+    .input-form input {
+      width: 280px;
+      padding: 6%;
+    }
+    
+    .btm-submit-btn {
+      width: 280px;
+      padding: 6%;
+    }
+    
+    .input-form p {
+      padding: 0 11%;
+    }
+  }
+  
+  @media only screen and (min-width: 545px) and (max-width: 1200px) {
+    .top-submit-btn {
+      padding: 0 15%;
+    }
+  }
