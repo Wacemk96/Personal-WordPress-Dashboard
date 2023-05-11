@@ -2,7 +2,8 @@ const request = require('request');
 const bodyParser = require('body-parser');
 const express = require('express');
 const https = require('https');
-const client = require("@mailchimp/mailchimp_marketing");
+const { url } = require('inspector');
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
@@ -16,68 +17,54 @@ app.get("/", (req, res) => {
 
 app.post('/', function (req, res) {
 
-    const firstName = req.body.fname;
-    const lastName = req.body.lname;
+    const firstName = req.body.firstName;
+    const lastName = req.body.lastName;
     const email = req.body.email;
 
-
-    client.setConfig({
-        apiKey: "367cc36dfa03227a7b25139fab206a64-us21",
-        server: "https://us21.api.mailchimp.com/3.0/lists/ef122d41df",
-    });
-
-    const run = async () => {
-        const response = await client.lists.batchListMembers("list_id", {
-            members: [{
+    const data = {
+        members: [
+            {
                 email_address: email,
-                status: subscribed,
+                status: "subscribed",
                 merge_fields: {
                     FNAME: firstName,
                     LNAME: lastName,
                 }
-            }],
-        });
-        console.log(response);
+            }
+        ]
     };
+    const jsonData = JSON.stringify(data);
+    
+    const listId = process.env.LIST_ID;
+    const url = `https://us21.api.mailchimp.com/3.0/lists/${listId}`;
 
-    run();
+    const options = {
+        method: "POST",
+        auth: `waseem:${process.env.API_KEY}`
+    }
 
-    // const data = {
-    //     members: [
-    //         {
-    //             email_address: email,
-    //             status: subscribed,
-    //             merge_fields: {
-    //                 FNAME: firstName,
-    //                 LNAME: lastName,
-    //             }
-    //         }
-    //     ]
-    // };
-    // const jsonData = JSON.stringify(data);
-    // const url = "https://us21.api.mailchimp.com/3.0/lists/ef122d41df";
+    const request = https.request(url, options, function(response){
+        if (response.statusCode === 200) {
+            res.sendFile(__dirname + "/success.html");
+        } else {
+            res.sendFile(__dirname + "/failure.html");
+        }
 
-    // const options = {
-    //     method: "POST",
-    //     auth: "waseemk:367cc36dfa03227a7b25139fab206a64-us21"
-    // }
+        response.on("data", function(data){
+            console.log(JSON.parse(data));
+        })
+    });
 
-    // const request = https.request(url, options, function(response) {
-    //     response.on("data", function(data){
-    //         console.log(JSON.parse(data));
-    //     })
-    // })
-    // request.write(jsonData);
-    // request.end();
-});
+    request.write(jsonData);
+    request.end();
+ 
+})
+
+app.post("/failure", function(req, res){
+    res.redirect("/")
+})
+
 
 app.listen(port, () => {
     console.log(`Server listening on port ${port}.`);
 });
-
-
-// mailship api key
-// 367cc36dfa03227a7b25139fab206a64-us21
-
-// mailchimp unique ID
-// ef122d41df
