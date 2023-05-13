@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "newsletter"
+    "start": "app.js"
   },
   "author": "Waseem Khan",
   "license": "ISC",
