@@ -24,25 +24,27 @@
             <form class="mainform" action="/" method="POST">
                 <div class="input-form">
                     <div>
-                        <input class="fname-field" type="text" name="firstName" pattern="[A-Za-z]{1,255}"
-                            placeholder="First Name" required>
+                        <input class="fname-field" type="text" name="username"
+                            placeholder="WordPress Username" required>
                         <p class="fname-error-message fname-success-message txt"></p>
                     </div>
-
                     <div>
-                        <input class="lname-field" type="text" name="lastName" pattern="[A-Za-z]{1,255}"
-                            placeholder="Last Name" required>
+                        <input class="password" type="password" name="password"
+                            placeholder="WordPress Password" required>
+                        <p class="email-error-message email-success-message txt"></p>
+                    </div>
+                    <div>
+                        <input class="lname-field" type="text" name="title""
+                            placeholder="Post Title" required>
                         <p class="lname-error-message lname-success-message txt"></p>
                     </div>
 
                     <div>
-                        <input class="email-field" type="email" name="email"
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="Email Address" required>
-                        <p class="email-error-message email-success-message txt"></p>
+                        <textarea name="content" id="content" cols="50" rows="20"></textarea>
                     </div>
 
                     <div>
-                        <button class="btm-submit-btn" type="submit">Subscribe !</button>
+                        <button class="btm-submit-btn" type="submit">Post on WordPress !</button>
                     </div>
 
                     <p>By clicking the button, you are agreeing to our <span class="terms">Terms and Services</span></p>

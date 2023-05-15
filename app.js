@@ -4,6 +4,7 @@ const express = require('express');
 const https = require('https');
 const { url } = require('inspector');
 require('dotenv').config();
+const axios = require('axios');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -15,52 +16,38 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/signup.html");
 });
 
-app.post('/', function (req, res) {
+app.post('/', async function (req, res) {
 
-    const firstName = req.body.firstName;
-    const lastName = req.body.lastName;
-    const email = req.body.email;
+    const username = req.body.username;
+    const password = req.body.password;
+    const title = req.body.title;
+    const content = req.body.content;
+    // Username: Admin
+    // Password: DSLw Fxme AjiP 5j9b 9xr9 V6lv
+    const auth = { username: username, password: password};
 
-    const data = {
-        members: [
-            {
-                email_address: email,
-                status: "subscribed",
-                merge_fields: {
-                    FNAME: firstName,
-                    LNAME: lastName,
-                }
-            }
-        ]
-    };
-    const jsonData = JSON.stringify(data);
-    
-    const listId = process.env.LIST_ID;
-    const url = `https://us21.api.mailchimp.com/3.0/lists/${listId}`;
 
-    const options = {
-        method: "POST",
-        auth: `waseem:${process.env.API_KEY}`
-    }
-
-    const request = https.request(url, options, function(response){
-        if (response.statusCode === 200) {
-            res.sendFile(__dirname + "/success.html");
-        } else {
-            res.sendFile(__dirname + "/failure.html");
-        }
-
-        response.on("data", function(data){
-            console.log(JSON.parse(data));
+    axios.post('http://localhost/wordpress/wp-json/wp/v2/posts',
+        {
+            title: title,
+            content: content,
+            status: 'publish'
+        },
+        { auth }
+    )
+        .then(response => {
+            console.log(response.data);
+            res.send(response.data.guid.rendered)
         })
-    });
+        .catch(error => {
+            console.error(error);
+            res.send(error)
+        });
 
-    request.write(jsonData);
-    request.end();
- 
+
 })
 
-app.post("/failure", function(req, res){
+app.post("/failure", function (req, res) {
     res.redirect("/")
 })
 
