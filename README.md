@@ -1,1 +1,2 @@
-# email-newsletter-mailchimp-api
+# Personal WordPress Dashboard with REST API Integration
+This repository contains a personal WordPress dashboard that utilizes the WordPress REST API. It provides a convenient way to create and manage posts on a WordPress website without the need to log in to the WordPress admin interface. The dashboard allows users to authenticate using their username and password and then post directly from the dashboard.
